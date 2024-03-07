@@ -11,9 +11,16 @@ const io = new SocketServer(server, {
 })
 
 io.on('connection', (socket) => {
-  console.log('Client connected')
-  socket.on('message', (data) => {
-    console.log(data)
+  console.log(socket.id)
+  socket.on('message', (body) => {
+    console.log(body)
+    // store the message in a database
+
+    // send the message to all the clients
+    socket.broadcast.emit('message', {
+      body,
+      from: socket.id.slice(6),
+    })
   })
 })
 
