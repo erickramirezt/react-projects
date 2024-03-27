@@ -18,4 +18,4 @@ const store = (set) => ({
     })),
 })
 
-export const useStore = create(store)
+export const  useStore = create(store)
